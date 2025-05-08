@@ -96,7 +96,7 @@ chmod +x cleanup.sh
 ```
 
 ## Security
-r
+
 - Security groups restrict access between tiers
 - Private subnets for application and database tiers
 - Regular security updates through AMI builds
