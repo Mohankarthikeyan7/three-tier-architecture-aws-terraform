@@ -75,14 +75,7 @@ The application is deployed across three tiers:
    cd three-tier-architecture-aws-terraform
    ```
 
-2. **Generate SSH key pairs**
-   ```bash
-   mkdir -p keys
-   ssh-keygen -t rsa -b 2048 -f keys/frontend
-   ssh-keygen -t rsa -b 2048 -f keys/backend
-   ```
-
-3. **Run the setup script**
+2. **Run the setup script**
    ```bash
    chmod +x setup.sh
    ./setup.sh
