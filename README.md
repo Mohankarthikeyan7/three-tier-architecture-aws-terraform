@@ -96,19 +96,15 @@ chmod +x cleanup.sh
 ```
 
 ## Security
-
-- All sensitive data is stored in AWS Secrets Manager
+r
 - Security groups restrict access between tiers
 - Private subnets for application and database tiers
-- SSL/TLS encryption for data in transit
 - Regular security updates through AMI builds
 
 ## Monitoring and Maintenance
 
-- CloudWatch metrics for monitoring
 - Auto Scaling based on CPU utilization
 - Regular AMI updates through Packer builds
-- Database backups configured
 
 ## Contributing
 
