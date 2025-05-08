@@ -1,0 +1,77 @@
+{
+  "builders": [
+    {
+      "ami_description": "Backend AMI with PHP, Apache, and MySQL client",
+      "ami_name": "three-tier-backend-{{timestamp}}",
+      "associate_public_ip_address": true,
+      "communicator": "ssh",
+      "instance_type": "{{user `instance_type`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "ssh_handshake_attempts": 30,
+      "ssh_interface": "public_ip",
+      "ssh_pty": true,
+      "ssh_timeout": "10m",
+      "ssh_username": "{{user `ssh_username`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "security_group_id": "{{user `security_group_id`}}",
+      "tags": {
+        "Component": "backend",
+        "Environment": "dev",
+        "Name": "three-tier-backend"
+      },
+      "temporary_key_pair_name": "packer-{{timestamp}}",
+      "type": "amazon-ebs",
+      "vpc_id": "{{user `vpc_id`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "sudo dnf upgrade -y",
+        "sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel -y",
+        "sudo dnf install mariadb105 -y",
+        "sudo usermod -a -G apache ec2-user",
+        "sudo chown -R ec2-user:apache /var/www",
+        "sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \\;",
+        "find /var/www -type f -exec sudo chmod 0664 {} \\;",
+        "sudo systemctl enable httpd",
+        "sudo dnf install git -y"
+      ],
+      "type": "shell"
+    },
+    {
+      "destination": "/tmp/database_setup.sql",
+      "source": "database_setup.sql",
+      "type": "file"
+    },
+    {
+      "inline": [
+        "# Run the database setup script to create schema and initial data",
+        "mysql -h \"{{user \"db_host\"}}\" -u \"{{user \"db_user\"}}\" -p\"{{user \"db_password\"}}\" < /tmp/database_setup.sql"
+      ],
+      "type": "shell"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json"
+    }
+  ],
+  "variables": {
+    "aws_region": "us-east-1",
+    "db_host": "",
+    "db_port": "3306",
+    "db_password": "",
+    "db_user": "",
+    "instance_type": "t3.micro",
+    "rds_sg_id": "",
+    "security_group_id": "",
+    "source_ami": "ami-0f88e80871fd81e91",
+    "ssh_username": "ec2-user",
+    "subnet_id": "",
+    "vpc_id": ""
+  }
+}
+

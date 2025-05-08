@@ -1,0 +1,9 @@
+aws_region = "us-east-1"
+vpc_cidr = "10.0.0.0/16"
+web_public_subnets = ["10.0.0.0/20", "10.0.16.0/20", "10.0.32.0/20"]
+web_private_subnets = ["10.0.48.0/20", "10.0.64.0/20", "10.0.80.0/20"]
+app_private_subnets = ["10.0.96.0/20", "10.0.112.0/20", "10.0.128.0/20"]
+database_subnets = ["10.0.144.0/20", "10.0.160.0/20", "10.0.176.0/20"]
+availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+environment = "dev"
+project_name = "three-tier-app" 

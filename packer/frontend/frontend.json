@@ -1,0 +1,61 @@
+{
+  "variables": {
+    "aws_region": "us-east-1",
+    "source_ami": "",
+    "instance_type": "t3.micro",
+    "ssh_username": "ec2-user",
+    "vpc_id": "",
+    "subnet_id": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "associate_public_ip_address": true,
+      "temporary_key_pair_name": "packer-{{timestamp}}",
+      "ssh_interface": "public_ip",
+      "ssh_timeout": "10m",
+      "ssh_handshake_attempts": 30,
+      "communicator": "ssh",
+      "ssh_pty": true,
+      "ami_name": "three-tier-frontend-{{timestamp}}",
+      "ami_description": "Frontend AMI with Nginx and Git",
+      "tags": {
+        "Name": "three-tier-frontend",
+        "Environment": "dev",
+        "Component": "frontend"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo dnf update -y",
+        "sudo dnf install -y nginx git"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "nginx.conf",
+      "destination": "/tmp/nginx.conf"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json"
+    }
+  ]
+} 
