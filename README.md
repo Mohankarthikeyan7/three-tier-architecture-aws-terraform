@@ -71,7 +71,7 @@ The application is deployed across three tiers:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/three-tier-architecture-aws-terraform.git
+   git clone https://github.com/ajitinamdar-tech/three-tier-architecture-aws-terraform.git
    cd three-tier-architecture-aws-terraform
    ```
 
