@@ -29,7 +29,7 @@ export TF_VAR_aws_region=$AWS_REGION
 
 # Create S3 bucket for Terraform state if it doesn't exist
 print_section "Setting up Terraform state bucket"
-BUCKET_NAME="three-tier-arch-aws-terraform"
+BUCKET_NAME="carcierge-staging-aws-terraform"
 if ! aws s3api head-bucket --bucket $BUCKET_NAME 2>/dev/null; then
     echo "Creating S3 bucket for Terraform state..."
     if [ "$AWS_REGION" = "us-east-1" ]; then

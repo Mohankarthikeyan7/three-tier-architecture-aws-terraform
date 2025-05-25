@@ -13,4 +13,4 @@ db_allocated_storage = 20
 db_storage_type = "gp2"
 
 # Terraform State Bucket
-terraform_state_bucket = "three-tier-arch-aws-terraform" 
+terraform_state_bucket = "carcierge-staging-aws-terraform" 

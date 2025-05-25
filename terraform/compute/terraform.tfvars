@@ -19,4 +19,4 @@ backend_max_size = 4
 backend_min_size = 1
 
 # Terraform State Bucket
-terraform_state_bucket = "three-tier-arch-aws-terraform" 
+terraform_state_bucket = "carcierge-staging-aws-terraform" 
