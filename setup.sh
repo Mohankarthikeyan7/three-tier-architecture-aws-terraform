@@ -24,7 +24,7 @@ check_command aws
 check_command jq
 
 # Initialize variables
-export AWS_REGION="us-west-2"
+export AWS_REGION="us-east-1"
 export TF_VAR_aws_region=$AWS_REGION
 
 # Create S3 bucket for Terraform state if it doesn't exist
@@ -32,7 +32,7 @@ print_section "Setting up Terraform state bucket"
 BUCKET_NAME="three-tier-arch-aws-terraform"
 if ! aws s3api head-bucket --bucket $BUCKET_NAME 2>/dev/null; then
     echo "Creating S3 bucket for Terraform state..."
-    if [ "$AWS_REGION" = "us-west-2" ]; then
+    if [ "$AWS_REGION" = "us-east-1" ]; then
         # us-east-1 doesn't support LocationConstraint
         aws s3api create-bucket \
             --bucket $BUCKET_NAME \
