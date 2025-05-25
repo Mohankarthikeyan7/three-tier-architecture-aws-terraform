@@ -23,7 +23,7 @@ check_command aws
 check_command jq
 
 # Initialize variables
-export AWS_REGION="us-east-1"
+export AWS_REGION="us-west-2"
 export TF_VAR_aws_region=$AWS_REGION
 
 # 1. Clean up EC2 infrastructure
