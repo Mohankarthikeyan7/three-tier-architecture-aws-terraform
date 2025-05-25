@@ -1,6 +1,6 @@
-# Three-Tier Architecture on AWS using Terraform
+# carcierge-staging Architecture on AWS using Terraform
 
-This project implements a three-tier architecture on AWS using Terraform for infrastructure as code and Packer for creating custom AMIs. The architecture follows best practices for high availability, scalability, and security.
+This project implements a carcierge-staging architecture on AWS using Terraform for infrastructure as code and Packer for creating custom AMIs. The architecture follows best practices for high availability, scalability, and security.
 
 ## Architecture Overview
 
@@ -71,8 +71,8 @@ The application is deployed across three tiers:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ajitinamdar-tech/three-tier-architecture-aws-terraform.git
-   cd three-tier-architecture-aws-terraform
+   git clone https://github.com/ajitinamdar-tech/carcierge-staging-architecture-aws-terraform.git
+   cd carcierge-staging-architecture-aws-terraform
    ```
 
 2. **Run the setup script**

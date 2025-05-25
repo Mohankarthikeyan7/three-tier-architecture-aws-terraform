@@ -78,7 +78,7 @@ cd ../..
 print_section "Destroying VPC infrastructure"
 
 # Get VPC ID
-VPC_ID=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=three-tier-app-vpc" --query 'Vpcs[0].VpcId' --output text)
+VPC_ID=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=carcierge-staging-app-vpc" --query 'Vpcs[0].VpcId' --output text)
 
 # Now destroy the VPC infrastructure
 cd terraform/network

@@ -2,7 +2,7 @@
   "builders": [
     {
       "ami_description": "Backend AMI with PHP, Apache, and MySQL client",
-      "ami_name": "three-tier-backend-{{timestamp}}",
+      "ami_name": "carcierge-staging-backend-{{timestamp}}",
       "associate_public_ip_address": true,
       "communicator": "ssh",
       "instance_type": "{{user `instance_type`}}",
@@ -18,7 +18,7 @@
       "tags": {
         "Component": "backend",
         "Environment": "dev",
-        "Name": "three-tier-backend"
+        "Name": "carcierge-staging-backend"
       },
       "temporary_key_pair_name": "packer-{{timestamp}}",
       "type": "amazon-ebs",

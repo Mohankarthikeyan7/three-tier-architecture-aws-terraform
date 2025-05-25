@@ -23,10 +23,10 @@
       "ssh_handshake_attempts": 30,
       "communicator": "ssh",
       "ssh_pty": true,
-      "ami_name": "three-tier-frontend-{{timestamp}}",
+      "ami_name": "carcierge-staging-frontend-{{timestamp}}",
       "ami_description": "Frontend AMI with Nginx and Git",
       "tags": {
-        "Name": "three-tier-frontend",
+        "Name": "carcierge-staging-frontend",
         "Environment": "dev",
         "Component": "frontend"
       }

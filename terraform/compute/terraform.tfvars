@@ -1,6 +1,6 @@
 aws_region = "us-east-1"
 environment = "dev"
-project_name = "three-tier-app"
+project_name = "carcierge-staging-app"
 
 # Key Pair
 frontend_key_name = "frontend-key"
